@@ -29,7 +29,7 @@ class AuthProvider with ChangeNotifier {
     final response = await ApiService().register(name, email, password);
 
     if (response != null && (response.statusCode == 200 || response.statusCode == 201)) {
-      print("✅ Kullanıcı başarıyla kaydedildi!");
+      print(" Kullanıcı başarıyla kaydedildi!");
 
       // Kullanıcı başarılı şekilde kayıt olduysa giriş işlemi yap
       await login(email, password);
@@ -45,7 +45,7 @@ class AuthProvider with ChangeNotifier {
       }
     }
 
-    print("❌ Kayıt başarısız! API Yanıtı: ${response?.data}");
+    print(" Kayıt başarısız! API Yanıtı: ${response?.data}");
     return false;
   }
 
@@ -56,6 +56,7 @@ class AuthProvider with ChangeNotifier {
 
     if (token == null) {
       _isAuthenticated = false;
+      notifyListeners();
       return;
     }
 
@@ -67,7 +68,24 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  /// Kullanıcı çıkış işlemi (Güncellendi!)
+  /// Kullanıcı oturumunu kontrol et (Uygulama açıldığında çağrılır)
+  Future<void> checkAuthStatus() async {
+    print("🔍 Kullanıcı oturum durumu kontrol ediliyor...");
+
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString("auth_token");
+
+    if (token != null) {
+      await loadUserProfile();
+      print(" Kullanıcı oturum açık.");
+    } else {
+      _isAuthenticated = false;
+      print(" Kullanıcı oturumu kapalı.");
+    }
+    notifyListeners();
+  }
+
+  /// Kullanıcı çıkış işlemi
   Future<void> logout(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove("auth_token");

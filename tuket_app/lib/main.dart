@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuket_app/providers/auth_provider.dart' as auth;
+import 'package:tuket_app/providers/auth_provider.dart';
 import 'package:tuket_app/screens/login_screen.dart';
 import 'package:tuket_app/screens/register_screen.dart';
 import 'package:tuket_app/screens/home_screen.dart';
+import 'package:tuket_app/screens/splash_screen.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => auth.AuthProvider()), // ✅ Çakışma giderildi
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
       ],
       child: const MyApp(),
     ),
@@ -22,17 +23,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tüket App',
+      title: 'Tüket',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/', //  Splash Screen başlangıç ekranı olarak ayarlandı
       routes: {
-        '/': (context) => const LoginScreen(),  // Başlangıç ekranı
-        '/register': (context) => const RegisterScreen(),  // **Kayıt ol ekranı**
-        '/home': (context) => const HomeScreen(), // **Ana ekran**
+        '/': (context) => const SplashScreen(),
         '/login': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/home': (context) => const HomeScreen(),
       },
     );
   }
