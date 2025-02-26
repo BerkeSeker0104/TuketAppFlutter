@@ -80,4 +80,18 @@ class ApiService {
     }
     return null;
   }
+
+  /// **İşletmeleri API'den getir**
+  Future<List<dynamic>?> getBusinesses() async {
+    try {
+      final response = await _dio.get(AppConstants.businessesEndpoint);
+      if (response.statusCode == 200) {
+        print("✅ İşletmeler başarıyla alındı!");
+        return response.data;
+      }
+    } catch (e) {
+      print("❌ İşletmeleri getirirken hata oluştu: $e");
+    }
+    return null;
+  }
 }

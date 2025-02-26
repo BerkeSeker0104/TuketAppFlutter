@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/', //  Splash Screen başlangıç ekranı olarak ayarlandı
+      initialRoute: '/', // Splash Screen başlangıç ekranı
       routes: {
         '/': (context) => const SplashScreen(),
         '/login': (context) => const LoginScreen(),
