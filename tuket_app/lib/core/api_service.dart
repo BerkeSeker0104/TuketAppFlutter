@@ -18,14 +18,14 @@ class ApiService {
   /// Kullanıcı giriş yapma
   Future<Response?> login(String email, String password) async {
     try {
-      print("📢 Login API çağrılıyor...");
+      print(" Login API çağrılıyor...");
       final response = await _dio.post(
         AppConstants.loginEndpoint,
         data: {"email": email, "password": password},
       );
 
-      print("✅ Login API Yanıtı: ${response.statusCode}");
-      print("📌 API Cevabı: ${response.data}");
+      print(" Login API Yanıtı: ${response.statusCode}");
+      print(" API Cevabı: ${response.data}");
 
       if (response.statusCode == 200 && response.data.containsKey('token')) {
         final prefs = await SharedPreferences.getInstance();
@@ -33,7 +33,7 @@ class ApiService {
         return response;
       }
     } catch (e) {
-      print("❌ Login Error: $e");
+      print(" Login Error: $e");
     }
     return null;
   }
@@ -41,20 +41,20 @@ class ApiService {
   /// Kullanıcı kayıt işlemi
   Future<Response?> register(String name, String email, String password) async {
     try {
-      print("📢 Register API çağrılıyor...");
-      print("📌 Gönderilen Veriler: Name: $name, Email: $email, Password: $password");
+      print(" Register API çağrılıyor...");
+      print(" Gönderilen Veriler: Name: $name, Email: $email, Password: $password");
 
       final response = await _dio.post(
         AppConstants.registerEndpoint,
         data: {"name": name, "email": email, "password": password},
       );
 
-      print("✅ Register API Yanıtı: ${response.statusCode}");
-      print("📌 API Cevabı: ${response.data}");
+      print(" Register API Yanıtı: ${response.statusCode}");
+      print(" API Cevabı: ${response.data}");
 
       return response;
     } catch (e) {
-      print("❌ Register Error: $e");
+      print(" Register Error: $e");
     }
     return null;
   }
@@ -66,7 +66,7 @@ class ApiService {
       final token = prefs.getString(AppConstants.authTokenKey);
       if (token == null) return null;
 
-      print("📢 Kullanıcı profil bilgileri çekiliyor...");
+      print(" Kullanıcı profil bilgileri çekiliyor...");
       final response = await _dio.get(
         AppConstants.userProfileEndpoint,
         options: Options(headers: {"Authorization": "Bearer $token"}),
@@ -76,7 +76,7 @@ class ApiService {
         return response;
       }
     } catch (e) {
-      print("❌ User Profile Error: $e");
+      print(" User Profile Error: $e");
     }
     return null;
   }
@@ -86,11 +86,11 @@ class ApiService {
     try {
       final response = await _dio.get(AppConstants.businessesEndpoint);
       if (response.statusCode == 200) {
-        print("✅ İşletmeler başarıyla alındı!");
+        print(" İşletmeler başarıyla alındı!");
         return response.data;
       }
     } catch (e) {
-      print("❌ İşletmeleri getirirken hata oluştu: $e");
+      print(" İşletmeleri getirirken hata oluştu: $e");
     }
     return null;
   }

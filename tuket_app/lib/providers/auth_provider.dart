@@ -24,7 +24,7 @@ class AuthProvider with ChangeNotifier {
 
   /// Kullanıcı kayıt işlemi
   Future<bool> register(String name, String email, String password) async {
-    print("📢 Register metodu çağrıldı");
+    print(" Register metodu çağrıldı");
 
     final response = await ApiService().register(name, email, password);
 
@@ -70,7 +70,7 @@ class AuthProvider with ChangeNotifier {
 
   /// Kullanıcı oturumunu kontrol et (Uygulama açıldığında çağrılır)
   Future<void> checkAuthStatus() async {
-    print("🔍 Kullanıcı oturum durumu kontrol ediliyor...");
+    print(" Kullanıcı oturum durumu kontrol ediliyor...");
 
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString("auth_token");

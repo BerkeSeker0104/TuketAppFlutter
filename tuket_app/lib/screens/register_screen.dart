@@ -25,13 +25,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _passwordController.text.trim(),
     );
 
-    print("✅ _register metodu tamamlandı!");
+    print(" _register metodu tamamlandı!");
 
     if (isRegistered) {
-      print("✅ Kayıt başarılı! Ana ekrana yönlendiriliyor...");
+      print(" Kayıt başarılı! Ana ekrana yönlendiriliyor...");
       Navigator.pushReplacementNamed(context, '/home');
     } else {
-      print("❌ Kullanıcı kayıt olamadı!");
+      print(" Kullanıcı kayıt olamadı!");
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Kayıt başarısız! Lütfen bilgilerinizi kontrol edin.")),
       );
@@ -63,8 +63,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                print("🚀 Kayıt ol butonuna tıklandı!");
-                _register(); // ✅ _register metodunu çağır
+                print(" Kayıt ol butonuna tıklandı!");
+                _register(); //  _register metodunu çağır
               },
               child: const Text("Kayıt Ol"),
             ),
