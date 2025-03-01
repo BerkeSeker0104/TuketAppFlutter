@@ -58,6 +58,7 @@ dependencies:
 
   # Günlükleme ve Hata Raporlama
   logger: ^2.3.0
+  firebase_core: ^3.12.1
 
 dev_dependencies:
   flutter_test:

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "325696733661",
+    "project_id": "tuketapp-1ba18",
+    "storage_bucket": "tuketapp-1ba18.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325696733661:android:6fddb531a0bce5808df634",
+        "android_client_info": {
+          "package_name": "com.tuket.app.tuket_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7TzBor8cJUiYQap8WAGjpevSH5DOZQlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
