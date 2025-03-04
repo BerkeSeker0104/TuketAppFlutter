@@ -6,6 +6,7 @@ import 'package:tuket_app/screens/login_screen.dart';
 import 'package:tuket_app/screens/register_screen.dart';
 import 'package:tuket_app/screens/home_screen.dart';
 import 'package:tuket_app/screens/splash_screen.dart';
+import 'package:tuket_app/screens/business_detail_screen.dart'; // ✅ İşletme detay ekranı eklendi.
 import 'firebase_options.dart';
 
 void main() async {

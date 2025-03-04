@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tuket_app/providers/auth_provider.dart';
 import 'package:tuket_app/core/api_service.dart';
+import 'package:tuket_app/screens/business_detail_screen.dart'; //  İşletme detay ekranı eklendi.
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -90,7 +91,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       subtitle: Text(business["address"] ?? "Adres bilgisi yok"),
                       trailing: const Icon(Icons.arrow_forward_ios),
                       onTap: () {
-                        // İşletme detay sayfasına yönlendirme (ilerleyen aşamalarda eklenecek)
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                BusinessDetailScreen(businessId: business["id"]),
+                          ),
+                        );
                       },
                     ),
                   );
